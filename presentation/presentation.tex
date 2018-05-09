@@ -58,6 +58,14 @@
 }
 \date{\today} % Date, can be changed to a custom date
 
+\AtBeginSection[]
+{
+  \begin{frame}
+  \frametitle{Inhalt}
+  \tableofcontents[currentsection]
+  \end{frame}
+}
+
 \begin{document}
 
 \begin{frame}
