@@ -1,0 +1,8 @@
+---
+Checks:          'clang-diagnostic-*,clang-analyzer-*,*,-clang-analyzer-alpha.*,-hicpp-*,-clang-diagnostic-unused-command-line-argument,-llvm-header-guard,-google-runtime-references,-cppcoreguidelines-special-member-functions,-llvm-namespace-comment,-google-readability-namespace-comments,-cert-err58-cpp,-readability-else-after-return,-google-build-using-namespace,-readability-implicit-bool-cast,-cppcoreguidelines-pro-type-vararg,-google-readability-todo,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-modernize-use-equals-default,-modernize-use-equals-delete,-performance-*,-clang-analyzer-*,-fuchsia-*,-readability-implicit-bool-conversion,-cppcoreguidelines-owning-memory,-readability-redundant-declaration,-readability-braces-around-statements,-readability-misleading-indentation,-google-readability-braces-around-statements,-readability-simplify-boolean-expr,-cppcoreguidelines-interfaces-global-init'
+WarningsAsErrors: '*'
+HeaderFilterRegex: '[^/].*'
+AnalyzeTemporaryDtors: false
+FormatStyle:     none
+
+...

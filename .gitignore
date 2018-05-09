@@ -1,0 +1,13 @@
+*~
+*.swp
+*.orig
+*/_minted-presentation/*
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.toc
+*.vrb
+*~

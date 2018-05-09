@@ -1,0 +1,8 @@
+# Set up Cyberdojo Server
+
+git clone https://github.com/adrianimboden/cppusergroup-asynchronous-programming
+
+cd cppusergroup-asynchronous-programming
+
+./cyber-dojo start-point create cppusergroup --dir=${PWD}/dojo
+./cyber-dojo up --custom=cppusergroup
