@@ -1,17 +1,17 @@
 {
   "visible_filenames": [
-    "sync/http_client.h",
-    "sync/main.cpp",
-    "threaded/http_client.h",
-    "threaded/main.cpp",
-    "callback/http_client.h",
-    "callback/main.cpp",
-    "task/http_client.h",
-    "task/main.cpp",
-    "boost_coroutine/http_client.h",
-    "boost_coroutine/main.cpp",
-    "coroutine_ts/http_client.h",
-    "coroutine_ts/main.cpp",
+    "01_sync/http_client.h",
+    "01_sync/main.cpp",
+    "02_threaded/http_client.h",
+    "02_threaded/main.cpp",
+    "03_callback/http_client.h",
+    "03_callback/main.cpp",
+    "04_task/http_client.h",
+    "04_task/main.cpp",
+    "05_boost_coroutine/http_client.h",
+    "05_boost_coroutine/main.cpp",
+    "06_coroutine_ts/http_client.h",
+    "06_coroutine_ts/main.cpp",
     "executor.h",
     "http_client.h",
     "http_client_implementations.h",
@@ -22,8 +22,8 @@
     ".clang-tidy",
     "cyber-dojo.sh"
   ],
-  "filename_extension" : ".cpp",
+  "filename_extension": ".cpp",
   "display_name": "C++ Usergroup, Asynchronous Programming",
   "image_name": "adrianimboden/dojo_clang",
-  "runner_choice":"stateless"
+  "runner_choice": "stateless"
 }

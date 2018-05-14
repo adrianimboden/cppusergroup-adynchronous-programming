@@ -6,12 +6,12 @@ link_directories(${CMAKE_INSTALL_PREFIX}/lib/)
 add_executable(app_test
     test.cpp
     task.cpp
-    sync/main.cpp
-    threaded/main.cpp
-    callback/main.cpp
-    task/main.cpp
-    boost_coroutine/main.cpp
-    coroutine_ts/main.cpp
+    01_sync/main.cpp
+    02_threaded/main.cpp
+    03_callback/main.cpp
+    04_task/main.cpp
+    05_boost_coroutine/main.cpp
+    06_coroutine_ts/main.cpp
 )
 
 target_link_libraries(app_test PRIVATE

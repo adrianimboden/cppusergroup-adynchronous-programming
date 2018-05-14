@@ -1,12 +1,12 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "boost_coroutine/http_client.h"
-#include "callback/http_client.h"
-#include "coroutine_ts/http_client.h"
-#include "sync/http_client.h"
-#include "task/http_client.h"
-#include "threaded/http_client.h"
+#include "01_sync/http_client.h"
+#include "02_threaded/http_client.h"
+#include "03_callback/http_client.h"
+#include "04_task/http_client.h"
+#include "05_boost_coroutine/http_client.h"
+#include "06_coroutine_ts/http_client.h"
 
 #include "executor.h"
 #include "http_client_implementations.h"
@@ -18,7 +18,7 @@
 using namespace testing;
 using namespace std::literals;
 
-TEST(Test, sync) {
+TEST(Test, _01_sync) {
   using namespace synchronous;
   auto http_client = ConcreteHttpClient{};
 
@@ -29,7 +29,7 @@ TEST(Test, sync) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, threaded) {
+TEST(Test, _02_threaded) {
   using namespace threaded;
   auto http_client = ConcreteHttpClient{};
 
@@ -40,7 +40,7 @@ TEST(Test, threaded) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, callback) {
+TEST(Test, _03_callback) {
   using namespace callback;
   auto executor    = Executor{};
   auto http_client = ConcreteHttpClient{};
@@ -57,7 +57,7 @@ TEST(Test, callback) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, task) {
+TEST(Test, _04_task) {
   using namespace task_based;
   auto executor    = Executor{};
   auto http_client = ConcreteHttpClient{};
@@ -76,7 +76,7 @@ TEST(Test, task) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, boost_coroutine_2) {
+TEST(Test, _05_boost_coroutine) {
   using namespace boost_coroutine;
   auto executor    = Executor{};
   auto http_client = ConcreteHttpClient{};
@@ -93,24 +93,7 @@ TEST(Test, boost_coroutine_2) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, boost_coroutine) {
-  using namespace boost_coroutine;
-  auto executor    = Executor{};
-  auto http_client = ConcreteHttpClient{};
-
-  auto result = std::vector<std::string>{};
-  executor.add_work([&] {
-    request_uris(http_client,
-                 {"/file1", "/file2", "/file3", "/extremeredirect"})
-      ->then([&](auto result_from_async) { result = result_from_async; });
-  });
-  executor.execute();
-
-  EXPECT_THAT(result,
-              ElementsAre("content1", "content1", "content2", "finally here"));
-}
-
-TEST(Test, coroutines_ts) {
+TEST(Test, _06_coroutines_ts) {
   using namespace coroutines_ts;
   auto executor    = Executor{};
   auto http_client = ConcreteHttpClient{};
@@ -125,24 +108,4 @@ TEST(Test, coroutines_ts) {
 
   EXPECT_THAT(result,
               ElementsAre("content1", "content1", "content2", "finally here"));
-}
-
-TEST(Test, when_all) {
-  auto               executor = Executor{};
-  std::optional<int> value;
-  executor.add_work([&] {
-    task<int> first_number  = make_task<int>();
-    task<int> second_number = make_task<int>();
-    when_all(first_number, second_number)
-      ->then([](std::tuple<int, int> values) { //
-        return std::get<0>(values) + std::get<1>(values);
-      })
-      ->then([&](int sum) { //
-        value = sum;
-      });
-    first_number->set_result(1);
-    second_number->set_result(2);
-  });
-  executor.execute();
-  ASSERT_THAT(value, Eq(3));
 }

@@ -1,12 +1,12 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
-#include "boost_coroutine/http_client.h"
-#include "callback/http_client.h"
-#include "coroutine_ts/http_client.h"
-#include "sync/http_client.h"
-#include "task/http_client.h"
-#include "threaded/http_client.h"
+#include "01_sync/http_client.h"
+#include "02_threaded/http_client.h"
+#include "03_callback/http_client.h"
+#include "04_task/http_client.h"
+#include "05_boost_coroutine/http_client.h"
+#include "06_coroutine_ts/http_client.h"
 
 #include "executor.h"
 
