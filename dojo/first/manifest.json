@@ -25,5 +25,5 @@
   "filename_extension": ".cpp",
   "display_name": "C++ Usergroup, Asynchronous Programming",
   "image_name": "adrianimboden/dojo_clang",
-  "runner_choice": "stateless"
+  "runner_choice": "stateful"
 }
