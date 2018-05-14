@@ -18,7 +18,7 @@
 using namespace testing;
 using namespace std::literals;
 
-TEST(Test, _01_sync) {
+TEST(DISABLED_Test, _01_sync) {
   using namespace synchronous;
   auto http_client = ConcreteHttpClient{};
 
@@ -29,7 +29,7 @@ TEST(Test, _01_sync) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, _02_threaded) {
+TEST(DISABLED_Test, _02_threaded) {
   using namespace threaded;
   auto http_client = ConcreteHttpClient{};
 
@@ -40,7 +40,7 @@ TEST(Test, _02_threaded) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, _03_callback) {
+TEST(DISABLED_Test, _03_callback) {
   using namespace callback;
   auto executor    = Executor{};
   auto http_client = ConcreteHttpClient{};
@@ -57,7 +57,7 @@ TEST(Test, _03_callback) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, _04_task) {
+TEST(DISABLED_Test, _04_task) {
   using namespace task_based;
   auto executor    = Executor{};
   auto http_client = ConcreteHttpClient{};
@@ -76,7 +76,7 @@ TEST(Test, _04_task) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, _05_boost_coroutine) {
+TEST(DISABLED_Test, _05_boost_coroutine) {
   using namespace boost_coroutine;
   auto executor    = Executor{};
   auto http_client = ConcreteHttpClient{};
@@ -93,7 +93,7 @@ TEST(Test, _05_boost_coroutine) {
               ElementsAre("content1", "content1", "content2", "finally here"));
 }
 
-TEST(Test, _06_coroutines_ts) {
+TEST(DISABLED_Test, _06_coroutines_ts) {
   using namespace coroutines_ts;
   auto executor    = Executor{};
   auto http_client = ConcreteHttpClient{};
